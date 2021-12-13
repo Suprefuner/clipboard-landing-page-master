@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Frontend Mentor | Clipboard landing page</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap");
+
+      :root {
+        /* primary color */
+        --strong-cyan: hsl(171, 66%, 44%);
+        --light-blue: hsl(233, 100%, 69%);
+
+        /* Accent */
+        --cyan-shadow: hsl(171, 73%, 32%);
+
+        /* Neutral color */
+        --dark-gray-blue: hsl(210, 10%, 33%);
+        --gray-blue: hsl(201, 11%, 66%);
+
+        /* font weight */
+        --fw-regu: 400;
+        --fw-semibold: 600;
+        --fw-bold: 700;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+        font-family: "Bai Jamjuree", sans-serif;
+      }
+
+      *,
+      *::before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: inherit;
+      }
+
+      section {
+        margin-top: 8rem;
+        padding-inline: 3rem;
+        padding-bottom: 2rem;
+      }
+
+      .wrapper {
+        max-width: 75rem;
+        margin: auto;
+      }
+
+      .sec-heading {
+        font-size: 1.5rem;
+        padding-bottom: 1.5rem;
+        color: var(--dark-gray-blue);
+        font-weight: var(--fw-bold);
+      }
+
+      p {
+        line-height: 1.5;
+        color: var(--gray-blue);
+      }
+
+      img {
+        width: 100%;
+        vertical-align: middle;
+      }
+
+      .btn-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 2.5rem;
+      }
+
+      .btn {
+        border-radius: 5rem;
+        font-weight: var(--fw-semibold);
+        box-shadow: 0 0.2rem 0 0 var(--shadow-clr),
+          0 0.5rem 1rem 0 var(--blur-clr);
+        color: hsl(255 100% 100%/0.8);
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        filter: brightness(1.2);
+      }
+
+      .btn-group a {
+        display: block;
+        padding-block: 1rem;
+      }
+
+      .ios-btn {
+        background-color: var(--strong-cyan);
+        --shadow-clr: hsl(171, 73%, 32%);
+        --blur-clr: hsl(171 66% 44%/0.5);
+      }
+
+      .mac-btn {
+        background-color: var(--light-blue);
+        --shadow-clr: hsl(233, 67%, 56%);
+        --blur-clr: hsl(233, 100%, 69%);
+      }
+
+      /* general setting end ---------------------------------------------- */
+
+      body {
+        width: 100%;
+        background: no-repeat url("./images/bg-header-mobile.png") top
+          center/contain;
+        text-align: center;
+      }
+
+      /* header section start ---------------------------------------------- */
+
+      .header-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-wrap .logo {
+        width: 40%;
+        aspect-ratio: 1;
+        background: no-repeat url("./images/logo.svg") center/cover;
+        margin-bottom: 4rem;
+      }
+
+      /* .header-wrap .txt {
+        padding-bottom: 2.5rem;
+      } */
+
+      .header-wrap .heading {
+        font-size: 1.7rem;
+        color: var(--dark-gray-blue);
+        padding-bottom: 1.5rem;
+      }
+
+      /* .header-wrap .btn-group a {
+        display: block;
+        padding-block: 1rem;
+      } */
+
+      /* header section end ---------------------------------------------- */
+
+      /* intro section start ---------------------------------------------- */
+      .intro-sec .img {
+        padding-block: 4rem;
+      }
+
+      .intro-sec .point-group h4 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--dark-gray-blue);
+        padding-bottom: 0.5rem;
+      }
+
+      .intro-sec .point-group li + li {
+        margin-top: 3rem;
+      }
+
+      /* intro section end ---------------------------------------------- */
+
+      /* feature section start ---------------------------------------------- */
+      .feature-sec .img {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+      }
+
+      .feature-sec .icon {
+        width: 15%;
+        margin: auto;
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+      }
+
+      .feature-sec .point-heading {
+        font-size: 1.25rem;
+        font-weight: var(--fw-bold);
+        color: var(--dark-gray-blue);
+        padding-bottom: 1rem;
+      }
+
+      .company-list {
+        padding-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .company-list li {
+        width: 40%;
+      }
+
+      /* feature section end ---------------------------------------------- */
+
+      /* footer section start ---------------------------------------------- */
+
+      .footer {
+        width: 100%;
+        background-color: rgb(235, 235, 235);
+      }
+
+      .footer a {
+        color: var(--dark-gray-blue);
+      }
+
+      .footer-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-block: 3rem;
+        gap: 3rem;
+      }
+
+      .footer .logo {
+        width: 20%;
+        aspect-ratio: 1;
+        background: no-repeat url("./images/logo.svg") center/cover;
+      }
+
+      .footer ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .footer .social-group {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer .social-group a {
+        font-size: 1.5rem;
+        transition: 0.3s;
+      }
+
+      .footer .social-group a:hover {
+        color: var(--strong-cyan);
+      }
+
+      /* footer section end
+      ---------------------------------------------- */
+
+      /* RWD start ---------------------------------------------- */
+      @media screen and (min-width: 376px) {
+        section {
+          padding-inline: 5rem;
+        }
+
+        .sec-heading {
+          font-size: 3rem;
+          font-weight: var(--fw-semibold);
+        }
+
+        .txt {
+          margin-inline: 8rem;
+        }
+
+        .txt p {
+          font-size: 1.55rem;
+        }
+
+        .btn-group {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .btn-group a {
+          display: inline-block;
+          padding: 1rem 2.5rem;
+        }
+
+        body {
+          background: no-repeat url("./images/bg-header-desktop.png") top
+            center/contain;
+        }
+
+        .header .logo {
+          width: 15%;
+          max-width: 11rem;
+        }
+
+        .header .heading {
+          font-size: 3.5rem;
+        }
+
+        .intro-sec .point {
+          display: flex;
+          align-items: center;
+          gap: 8rem;
+          padding-right: 3rem;
+        }
+
+        .intro-sec .point h4 {
+          font-size: 2rem;
+        }
+
+        .intro-sec .point .img {
+          width: 200%;
+          margin-left: -10rem;
+        }
+
+        .intro-sec .point-group {
+          text-align: left;
+        }
+
+        .intro-sec .point-group p {
+          font-size: 1.2rem;
+        }
+        .feature-sec .txt {
+          padding-bottom: 4rem;
+        }
+
+        .feature-sec .feature-list {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+          padding-top: 2rem;
+        }
+
+        .feature-list .icon {
+          height: 10rem;
+        }
+
+        .feature-sec .feature-list .point-heading {
+          font-size: 2rem;
+        }
+
+        .feature-sec .feature-list p {
+          font-size: 1.5rem;
+        }
+
+        .company-list {
+          flex-direction: row;
+          justify-content: space-between;
+          padding-top: 10rem;
+        }
+
+        .company-list img {
+          width: 100%;
+        }
+
+        .download-sec {
+          padding-block: 6rem;
+        }
+
+        .download-sec .txt {
+          width: 45rem;
+          margin: auto;
+        }
+
+        .footer-wrap {
+          flex-direction: row;
+        }
+
+        .footer-wrap .logo {
+          min-width: 3.125rem;
+          max-width: 3.75rem;
+          width: 10%;
+          margin-right: 5%;
+        }
+
+        .footer-wrap ul {
+          min-width: 26rem;
+          max-width: 35rem;
+          width: 80%;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          grid-auto-flow: column;
+          /* font-size: 1.5rem; */
+          font-weight: var(--fw-semibold);
+          text-align: left;
+        }
+
+        .footer-wrap ul a {
+        }
+
+        .footer-wrap ul a:hover {
+          color: var(--strong-cyan);
+        }
+
+        .footer-wrap .social-group {
+          justify-content: flex-end;
+          gap: 2rem;
+        }
+
+        .footer-wrap .social-group a {
+          font-size: 2rem;
+        }
+      }
+
+      /* RWD end
+      ---------------------------------------------- */
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="sr-only">Clipboard Landing Page</h1>
+      <section class="header">
+        <div class="header-wrap wrapper">
+          <div class="logo"></div>
+          <div class="txt">
+            <h2 class="heading">A history of everything you copy</h2>
+            <p>
+              Clipboard allows you to track and organize everything you copy.
+              Instantly access your clipboard on all your devices.
+            </p>
+          </div>
+          <div class="btn-group">
+            <a href="#" class="btn ios-btn"> Download for iOS </a>
+            <a href="#" class="btn mac-btn">Download for Mac</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-sec">
+        <div class="intro-wrap wrapper">
+          <div class="txt">
+            <h3 class="sec-heading">Keep track of your snippets</h3>
+            <p>
+              Clipboard instantly stores any item you copy in the cloud, meaning
+              you can access your snippets immediately on all your devices. Our
+              Mac and iOS apps will help you organize everything.
+            </p>
+          </div>
+
+          <div class="point">
+            <div class="img">
+              <img src="./images/image-computer.png" alt="" />
+            </div>
+            <ul class="point-group">
+              <li>
+                <h4>Quick Search</h4>
+                <p>
+                  Easily search your snippets by content, category, web address,
+                  application, and more.
+                </p>
+              </li>
+              <li>
+                <h4>iCloud Sync</h4>
+                <p>
+                  Instantly saves and syncs snippets across all your devices.
+                </p>
+              </li>
+              <li>
+                <h4>Complete History</h4>
+                <p>
+                  Retrieve any snippets from the first moment you started using
+                  the app.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-sec">
+        <div class="feature-wrap wrapper">
+          <div class="txt">
+            <h3 class="sec-heading">Access Clipboard anywhere</h3>
+            <p>
+              Whether you’re on the go, or at your computer, you can access all
+              your Clipboard snippets in a few simple clicks.
+            </p>
+          </div>
+          <div class="img">
+            <img src="./images/image-devices.png" alt="" />
+          </div>
+
+          <div class="txt">
+            <h4 class="sec-heading">Supercharge your workflow</h4>
+            <p>We’ve got the tools to boost your productivity.</p>
+          </div>
+
+          <ul class="feature-list">
+            <li>
+              <div class="icon">
+                <img src="./images/icon-blacklist.svg" alt="" />
+              </div>
+              <p class="point-heading">Create blacklists</p>
+              <p>
+                Ensure sensitive information never makes its way to your
+                clipboard by excluding certain sources.
+              </p>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="./images/icon-text.svg" alt="" />
+              </div>
+              <p class="point-heading">Plain text snippets</p>
+              <p>
+                Remove unwanted formatting from copied text for a consistent
+                look.
+              </p>
+            </li>
+            <li>
+              <div class="icon">
+                <img src="./images/icon-preview.svg" alt="" />
+              </div>
+              <p class="point-heading">Sneak preview</p>
+              <p>
+                Quick preview of all snippets on your Clipboard for easy access.
+              </p>
+            </li>
+          </ul>
+
+          <ul class="company-list">
+            <li><img src="./images/logo-google.png" alt="Google logo" /></li>
+            <li><img src="./images/logo-ibm.png" alt="IBM logo" /></li>
+            <li>
+              <img src="./images/logo-microsoft.png" alt="Microsoft logo" />
+            </li>
+            <li><img src="./images/logo-hp.png" alt="HP logo" /></li>
+            <li>
+              <img src="./images/logo-vector-graphics.png" alt="VG logo" />
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="download-sec">
+        <div class="download-wrap wrapper">
+          <div class="txt">
+            <h3 class="sec-heading">Clipboard for iOS and Mac OS</h3>
+            <p>
+              Available for free on the App Store. Download for Mac or iOS, sync
+              with iCloud and you’re ready to start adding to your clipboard.
+            </p>
+
+            <div class="btn-group">
+              <a href="#" class="btn ios-btn"> Download for iOS </a>
+              <a href="#" class="btn mac-btn">Download for Mac</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer">
+        <div class="footer-wrap wrapper">
+          <div class="logo"></div>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Press Kit</a></li>
+            <li><a href="#">Install Guide</a></li>
+          </ul>
+
+          <div class="social-group">
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Joe Jai</a>.
+      </p>
+    </footer>
+  </body>
+</html>
